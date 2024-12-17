@@ -1,0 +1,529 @@
+/* ======================= Глобальні стилі ======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ======================= Шапка сайту (header) ======================= */
+header {
+    background-color: #2d3b3a;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Робить шапку "липкою" */
+    top: 0; /* Фіксує шапку у верхній частині сторінки */
+    z-index: 1000; /* Щоб шапка завжди була зверху інших елементів */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь для візуального відділення */
+}
+
+
+header .logo {
+    order: 1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-right: 130px;
+}
+
+header .logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f39c12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: text-glow 3s infinite;
+}
+
+header .header-icon {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-icon img {
+    max-width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.header-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Ефект тексту */
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 10px rgba(243, 156, 18, 0.7),
+                     0 0 20px rgba(243, 156, 18, 0.5);
+    }
+    50% {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7),
+                     0 0 15px rgba(243, 156, 18, 0.9),
+                     0 0 30px rgba(243, 156, 18, 0.7);
+    }
+}
+
+/* ======================= Меню та випадаючі списки ======================= */
+nav {
+    position: relative;
+    text-align: left;
+}
+
+.menu-dropdown {
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    order: 1;
+}
+
+.menu-dropdown span {
+    position: relative;
+    padding: 15px 68px;
+    font-weight: 700; /* Зробити текст ще жирнішим */
+    color: #f4d6a3; /* Білий колір тексту */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Додає чіткість через тінь */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+ 
+}
+
+/* Псевдоелемент для білої анімованої лінії */
+.menu-dropdown span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #d48510; /* Білий колір для рамки */
+    border-radius: 5px; /* Повторюємо закруглення кнопки */
+    box-sizing: border-box; /* Враховуємо padding і border */
+    animation: border-move 2s linear infinite; /* Запускаємо анімацію */
+    pointer-events: none; /* Лінія не заважає клікам */
+}
+
+/* Анімація обведення */
+@keyframes border-move {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+}
+
+/* Hover ефект для кнопки */
+.menu-dropdown span:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+}
+
+.menu-dropdown:hover span,
+.menu-dropdown.active span {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34495e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    top: 40px;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+    background-color: #2d3b3a;
+}
+
+.dropdown-content a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+}
+
+.menu-dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Підменю */
+.dropdown-content .sub-menu {
+    display: none;
+    position: relative;
+    background-color: #2d3b3a;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content .sub-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 8px;
+}
+
+.dropdown-content .sub-menu a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ======================= Головний банер (hero) ======================= */
+.hero {
+    background: url('https://vmsc.lt/img/447950.jpg') center/cover no-repeat;
+    padding: 100px 0;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); /* Тінь: чорна, трохи розмита */
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); 
+}
+
+.hero .cta-button {
+    background-color: #f39c12;
+    padding: 10px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9); /* Додаємо тінь до кнопки */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background-color: #e67e22;
+    transform: scale(1.05); 
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* ======================= Секція послуг (services) ======================= */
+.services {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    background-color: #ecf0f1;
+}
+
+.service-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+}
+
+.service-item a {
+    text-decoration: none; /* Прибирає підкреслення */
+}
+
+.service-item a:hover img {
+    transform: scale(1.1); /* Легка анімація збільшення при наведенні */
+    transition: transform 0.2s ease-in-out; /* Плавний перехід */
+}
+
+.service-item h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.service-item img.service-icon {
+    width: 60px; /* Ширина логотипу */
+    height: 60px; /* Висота логотипу */
+    margin-bottom: 20px; /* Відступ від заголовка */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ======================= Секція відгуків (testimonials) ======================= */
+.testimonials {
+    background-color: #2f3640;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.testimonial-item {
+    background-color: #fff;
+    color: #2d3b3a;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 60%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial-item span {
+    display: block;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+/* ======================= Футер (footer) ======================= */
+footer {
+    background-color: #333; /* Темний фон */
+    color: #fff; /* Білий текст */
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-content {
+    display: flex; /* Вирівнюємо блоки по горизонталі */
+    justify-content: space-between; /* Рівномірний розподіл */
+    align-items: flex-start; /* Вирівнюємо по верхньому краю */
+    padding: 0 20px;
+    flex-wrap: wrap; /* Дозволяє перенос блоків на новий рядок */
+  }
+  
+  .footer-section {
+    width: 30%; /* Ширина кожного блоку */
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    color: #f1c40f; /* Жовтий заголовок */
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p, .footer-section ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  
+  .footer-section ul li {
+    list-style: none;
+    margin: 5px 0;
+  }
+  
+  .footer-section a {
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+    color: #f1c40f;
+  }
+  
+  /* Соцмережі з логотипами */
+  .footer-section.socials a {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  .footer-section.socials img {
+    vertical-align: middle; /* Вирівнює логотипи по центру */
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-section.socials img:hover {
+    transform: scale(1.2); /* Збільшує іконку при наведенні */
+  }
+  
+  /* Нижня частина футера */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px solid #777;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+/* ======================= Медіазапити ======================= */
+@media (max-width: 768px) {
+    .menu-dropdown span {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .dropdown-content {
+        width: 200px;
+    }
+}
+
+
+
+/* ===== Секція новин ===== */
+.news-updates {
+    padding: 70px 20px;
+    background-color: #87836566; /* Легкий сірий фон для контрасту */
+    text-align: center;
+    border-bottom: 5px solid #979797;
+}
+
+.news-updates h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #d48510;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* ===== Сітка новин ===== */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* ===== Карточка новини ===== */
+.news-item {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+
+
+/*
+#7f8c8d   
+#d48510
+#2d3b3a
+*/
+
+/* ===== Зображення новини ===== */
+.news-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== Контент новини ===== */
+.news-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.news-content h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.news-content p {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* ===== Кнопка ===== */
+.news-content .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #7d6b59;
+    border-radius: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.news-content .btn:hover {
+    background-color: #313940;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Адаптивність ===== */
+@media (max-width: 768px) {
+    .news-item {
+        margin-bottom: 30px;
+    }
+
+    .news-updates h2 {
+        font-size: 32px;
+    }
+}

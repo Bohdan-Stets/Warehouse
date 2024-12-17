@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <link rel="icon" type="image/x-icon" href="Foto/prov.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse</title>
+    <link rel="stylesheet" href="Site.css">
+    <script src="site.js" defer></script>
+</head>
+<body>
+    <header>
+
+        <nav>
+            <div class="menu-dropdown">
+                <span>Меню</span>
+                <div class="dropdown-content">
+                    <a href="index.html">Головна</a>
+                    <a href="Composition.html">Склади</a>
+                    <a href="Provider.html">Постачальники</a>
+                    <a href="Site_Reports.html">Звіт</a>
+                    <a href="Contacts.html">Контакти</a>
+                    <a href="About_us.html">Про Нас</a>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="center-links">
+            <div class="header-logo">
+            <a href="Composition.html">
+                <img src="Foto/War.png" alt="Логотип" />
+            </a>
+            <a href="Provider.html">
+                <img src="Foto/prov.png" alt="Логотип" />
+            </a>
+            <a href="Site_Reports.html">
+                <img src="Foto/paper1.png" alt="Логотип" />
+            </a>
+        </div>
+        </nav>
+         <!-- Поле пошуку -->
+         <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Пошук товарів..." />
+        </div>
+        <div class="header-cart">
+            <div id="cart-icon" class="header-cart-icon">
+                <img src="Foto/Ware.png" alt="Кошик" />
+                <div id="cart-count" class="cart-count">0</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+            <aside class="category-filter">
+        <h3>Категорії</h3>
+        <aside class="category-filter1">
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="milk"> Молочні продукти
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="fish"> Риба
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="meat"> М'ясо
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="sausage"> Ковбасні вироби
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="frozen"> Заморожені продукти
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="bread"> Хлібобулочні вироби
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="vegetables"> Овочі та Фрукти
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" class="category-checkbox" value="drink"> Напої
+            </label>
+        </div>
+        </aside>
+    </aside>
+
+
+
+    <div id="category"><h2>Новинки на складі</h2></div>
+    <div class="new-products-slideshow">
+        <div class="slides">
+            <div class="slide">
+                <img src="Foto/fish1.jpeg" alt="Новий товар 1">
+                <h3>Риба Дорадо</h3>
+                <p><strong>Ціна:</strong> 198.40 грн</p>
+                <button class="add-to-cart" data-name="Риба Дорадо" data-price="198.40" data-image="Foto/fish1.jpeg">Додати до кошика</button>
+            </div>
+            <div class="slide">
+                <img src="Foto1/frozen2.png" alt="Новий товар 2">
+                <h3>Нагетси курячі</h3>
+                <p><strong>Ціна:</strong> 73 грн</p>
+                <button class="add-to-cart" data-name="Нагетси курячi" data-price="73" data-image="Foto/frozen2.png">Додати до кошика</button>
+            </div>
+            <div class="slide">
+                <img src="Foto1/bread3.jpg" alt="Новий товар 3">
+                <h3>Хліб Європейський тостовий</h3>
+                <p><strong>Ціна:</strong> 25 грн</p>
+                <button class="add-to-cart" data-name="Хліб Європейський тостовий" data-price="25" data-image="Foto/bread3.jpg">Додати до кошика</button>
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="indicators"></div>
+    </div>
+    
+
+    <div class="container">
+        <div id="search-results" class="search-results">
+            <p id="search-message" style="display: none; text-align: center;">Товари за запитом</p>
+            <!-- Тут буде відображатися результат пошуку -->
+        </div>
+    </div>
+        <div id="category-title"><h2>Всі продукти</h2></div>
+        <div class="product-list">
+            <div class="product" data-name="Йогурт Натуральний" data-category="milk">
+                <img src="Foto/YogurtNat.jpg" alt="Продукт" class="product-image">
+                <h3>Йогурт Натуральний</h3>
+                <p>Йогурт без добавок. Галичина, 280 г.</p>
+                <p><strong>Ціна:</strong> 40 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Йогурт натуральний" data-price="40" data-image="Foto/YogurtNat.jpg">Додати до кошика</button>
+            </div>
+            
+            
+
+            <div class="product" data-name="Йогурт Персик-Маракуйя" data-category="milk">
+                <img src="Foto/Yogurt1.jpg" alt="Продукт" class="product-image">
+                <h3>Йогурт Персик-Маракуйя</h3>
+                <p>Йогурт персик-маркуя. Дольче 280 г.</p>
+                <p><strong>Ціна:</strong> 42 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Йогурт персик-маркуєю" data-price="42" data-image="Foto/Yogurt1.jpg">Додати до кошика</button>
+            </div>
+
+            
+            <div class="product" data-name="Йогурт Вишня" data-category="milk">
+                <img src="Foto/Yogurt2.jpg" alt="Продукт" class="product-image">
+                <h3>Йогурт Вишня</h3>
+                <p>Йогурт Вишня. Галичина, 280 г.</p>
+                <p><strong>Ціна:</strong> 14 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Йогурт вишня" data-price="14" data-image="Foto/Yogurt2.jpg">Додати до кошика</button>
+            </div>
+            <div class="product" data-name="Йогурт Ківі" data-category="milk">
+                <img src="Foto/Yogurt4.jpg" alt="Продукт" class="product-image">
+                <h3>Йогурт Ківі</h3>
+                <p>Йогурт Ківі. Дольче, 280 г.</p>
+                <p><strong>Ціна:</strong> 39 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Йогурт лісові ягоди" data-price="39" data-image="Foto/Yogurt3.jpg">Додати до кошика</button>
+            </div>
+
+            <div class="product" data-name="Сир Гауда" data-category="milk">
+                <img src="Foto/Gouda.jpg" alt="Продукт" class="cheese">
+                <h3>Сир "Гауда"</h3>
+                <p>Нарізка 400 г</p>
+                <p><strong>Ціна:</strong> 200 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Сир 'Гауда'" data-price="200" data-image="Foto/Gouda.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Сир Звенигора" data-category="milk">
+                <img src="Foto/ЗвениГора.jpg" alt="Продукт" class="cheese">
+                <h3>Сир "Звенигора"</h3>
+                <p>Твердий сир, фасований, 180 г.</p>
+                <p><strong>Ціна:</strong> 120 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Сир 'Звени Гора'" data-price="120" data-image="Foto/ЗвениГора.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+            <div class="product" data-name="Сир Моцарелла" data-category="milk">
+                <img src="Foto/Моцарелла.jpg" alt="Продукт" class="cheese">
+                <h3>Сир "Моцарелла"</h3>
+                <p>Розсольний сир Ферма Моцарелла фасований 200 г.</p>
+                <p><strong>Ціна:</strong> 55 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Сир 'Моцарелла'" data-price="55" data-image="Foto/Моцарелла.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+            <div class="product" data-name="Сир Dziugas Young" data-category="milk">
+                <img src="Foto/Dziugas.jpg" alt="Продукт" class="cheese">
+                <h3>Сир "Dziugas Young"</h3>
+                <p>Твердий сир Dziugas Young фасований 180 г.</p>
+                <p><strong>Ціна:</strong> 150 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Сир 'Dziugas Young'" data-price="150" data-image="Foto/Dziugas.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+            <div class="product" data-name="Риба Дородо" data-category="fish">
+                <img src="Foto/fish1.jpeg" alt="Продукт" class="fish">
+                <h3>Риба Дорадо</h3>
+                <p>Риба Дорадо 400г охолоджена</p>
+                <p><strong>Ціна:</strong> 198.40 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Риба Дорадо" data-price="198.40" data-image="Foto/fish1.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Риба Карась" data-category="fish">
+                <img src="Foto/fish2.jpg" alt="Продукт" class="fish">
+                <h3>Риба Карась</h3>
+                <p>Карась охолоджений 350г</p>
+                <p><strong>Ціна:</strong> 39 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Риба Карась" data-price="39" data-image="Foto/fish2.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+
+            <div class="product" data-name="Риба Сібас" data-category="fish">
+                <img src="Foto/fish3.jpg" alt="Продукт" class="fish">
+                <h3>Риба Сібас</h3>
+                <p>Риба Сібас 400г патрана</p>
+                <p><strong>Ціна:</strong> 275 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Риба Сібас" data-price="275" data-image="Foto/fish3.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Калкан" data-category="fish">
+                <img src="Foto/fish4.jpeg" alt="Продукт" class="fish">
+                <h3>Калкан</h3>
+                <p>Калкан 1.1кг охолоджений</p>
+                <p><strong>Ціна:</strong> 490 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Калкан" data-price="490" data-image="Foto/fish4.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+            <div class="product" data-name="Тушка курчати бройлера охолоджена" data-category="meat">
+                <img src="Foto1/meat1.jpeg" alt="Продукт" class="meat">
+                <h3>Тушка курчати бройлера</h3>
+                <p>1 кг курячого кайфу</p>
+                <p><strong>Ціна:</strong> 90 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Тушка курчати бройлера" data-price="90" data-image="Foto1/meat1.jpeg">
+                    Додати до кошика
+                </button>
+            </div>
+
+
+            <div class="product" data-name="Свинячий окіст без кістки охолоджений" data-category="meat">
+                <img src="Foto1/meat2.jpeg" alt="Продукт" class="meat">
+                <h3>Свинячий окіст</h3>
+                <p>Свинячий окіст без кістки охолоджений. 1 кг</p>
+                <p><strong>Ціна:</strong> 160 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Свинячий окіст" data-price="160" data-image="Foto1/meat2.jpeg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Куряче філе" data-category="meat">
+                <img src="Foto1/meat3.jpeg" alt="Продукт" class="meat">
+                <h3>Куряче філе</h3>
+                <p>Куряче філе охолоджене 200 гр</p>
+                <p><strong>Ціна:</strong> 140 грн/кг</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Куряче філе" data-price="27" data-image="Foto1/meat3.jpeg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Куряче крила" data-category="meat">
+                <img src="Foto1/meat4.jpeg" alt="Продукт" class="meat">
+                <h3>Курячі крила</h3>
+                <p>Курячі крила охолодження 75 гр</p>
+                <p><strong>Ціна:</strong> 79 грн/кг</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Курячі крила" data-price="4" data-image="Foto1/meat4.jpeg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Ковбаса Чорізо" data-category="sausage">
+                <img src="Foto/sausage1.jpg" alt="Продукт" class="sausage">
+                <h3>Ковбаса Чорізо</h3>
+                <p>Ковбаса Чорізо. Кулар Екстра з солодким червоним перцем. 500 гр.</p>
+                <p><strong>Ціна:</strong> 280 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Ковбаса Чорізо" data-price="280" data-image="Foto/sausage1.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Ковбаса Алан Єврейська" data-category="sausage">
+                <img src="Foto1/sausage2.jpg" alt="Продукт" class="sausage">
+                <h3>Ковбаса Алан Єврейська</h3>
+                <p>Ковбаса Алан Єврейська сировялена половина. 450 гр.</p>
+                <p><strong>Ціна:</strong> 350 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Ковбаса Алан Єврейська" data-price="350" data-image="Foto1/sausage2.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            
+            <div class="product" data-name="Ковбаса зі свинини варено-копчена" data-category="sausage">
+                <img src="Foto1/sausage3.jpg" alt="Продукт" class="sausage">
+                <h3>Ковбаса зі свинини варено-копчена</h3>
+                <p>Ковбаса Домашня ніжна копчено-запечена від Майстрів Смаку . 1 кг.</p>
+                <p><strong>Ціна:</strong> 400 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Ковбаса зі свинини варено-копчена" data-price="400" data-image="Foto1/sausage3.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Ковбаса Чорізо Монтеро сировялена" data-category="sausage">
+                <img src="Foto1/sausage4.jpg" alt="Продукт" class="sausage">
+                <h3>Ковбаса Чорізо Монтеро сировялена</h3>
+                <p>Ковбаса Carchelejo Чорізо Монтеро сировялена. 450 гр.</p>
+                <p><strong>Ціна:</strong> 300 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Ковбаса Чорізо Монтеро сировялена" data-price="300" data-image="Foto1/sausage4.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+
+
+            <div class="product" data-name="Тісто листове" data-category="frozen">
+                <img src="Foto/frozen1.png" alt="Продукт" class="frozen">
+                <h3>Тісто листове</h3>
+                <p>Тісто листове 450г ТМ Лімо</p>
+                <p><strong>Ціна:</strong> 40 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Тісто листове" data-price="40" data-image="Foto/frozen1.png">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Нагетси курячі" data-category="frozen">
+                <img src="Foto1/frozen2.png" alt="Продукт" class="frozen">
+                <h3>Нагетси курячі</h3>
+                <p>Нагетси Легко! курячi замороженi 300г</p>
+                <p><strong>Ціна:</strong> 73 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Нагетси курячі" data-price="73" data-image="Foto1/frozen2.png">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Сирники" data-category="frozen">
+                <img src="Foto1/frozen3.png" alt="Продукт" class="frozen">
+                <h3>Сирники</h3>
+                <p>Сирники Хуторок селянський заморожені 500г</p>
+                <p><strong>Ціна:</strong> 149 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Сирники" data-price="149" data-image="Foto1/frozen3.png">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Котлети з моцареллою" data-category="frozen">
+                <img src="Foto1/frozen4.png" alt="Продукт" class="frozen">
+                <h3>Котлети з моцареллою</h3>
+                <p>Котлети Стейкова подорож Панко з моцареллою заморожені 400г</p>
+                <p><strong>Ціна:</strong> 299 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Котлети з моцареллою" data-price="299" data-image="Foto1/frozen4.png">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Багет" data-category="bread">
+                <img src="Foto/bread1.jpg" alt="Продукт" class="bread">
+                <h3>Багет</h3>
+                <p>Багет ТМ Агробізнес</p>
+                <p><strong>Ціна:</strong> 28 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Багет" data-price="90" data-image="Foto/bread1.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Хліб Європейський тостовий" data-category="bread">
+                <img src="Foto1/bread2.jpg" alt="Продукт" class="bread">
+                <h3>Хліб Європейський тостовий</h3>
+                <p>Хліб Кулиничі Європейський тостовий 330г</p>
+                <p><strong>Ціна:</strong> 25 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Хліб Європейський тостовий" data-price="25" data-image="Foto1/bread2.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+
+
+            <div class="product" data-name="Хліб Український нарізаний" data-category="bread">
+                <img src="Foto1/bread3.jpg" alt="Продукт" class="bread">
+                <h3>Хліб Український нарізаний</h3>
+                <p>Хліб Marka Promo Український Новий нарізаний половина 475г</p>
+                <p><strong>Ціна:</strong> 16 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Хліб Український нарізаний" data-price="16" data-image="Foto1/bread3.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Хліб Панський пшеничний" data-category="bread">
+                <img src="Foto1/bread4.jpg" alt="Продукт" class="bread">
+                <h3>Хліб Панський пшеничний</h3>
+                <p>Хліб Цар Хліб Панський пшеничний нарізний 400г</p>
+                <p><strong>Ціна:</strong> 25 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Хліб Панський пшеничний" data-price="25" data-image="Foto1/bread4.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Картопля" data-category="vegetables">
+                <img src="Foto/vegetables1.jpg" alt="Продукт" class="vegetables">
+                <h3>Картопля</h3>
+                <p>1 кг картоплі</p>
+                <p><strong>Ціна:</strong> 20 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Картопля" data-price="20" data-image="Foto/vegetables.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Лимон" data-category="vegetables">
+                <img src="Foto1/limon.jpg" alt="Продукт" class="vegetables">
+                <h3>Лимон</h3>
+                <p>Лимон свіжий</p>
+                <p><strong>Ціна:</strong> 40 грн/кг</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Лимон" data-price="13" data-image="Foto1/limon.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+            <div class="product" data-name="Помідори" data-category="vegetables">
+                <img src="Foto1/vegetables3.jpg" alt="Продукт" class="vegetables">
+                <h3>Помідори</h3>
+                <p>Помідори найкращого гатунку</p>
+                <p><strong>Ціна:</strong> 60 грн/кг</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Помідори" data-price="9" data-image="Foto1/vegetables3.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+            <div class="product" data-name="Морква" data-category="vegetables">
+                <img src="Foto1/vegetables4.jpg" alt="Продукт" class="vegetables">
+                <h3>Морква</h3>
+                <p>Морква - Україна</p>
+                <p><strong>Ціна:</strong> 28 грн/кг</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Морква" data-price="7" data-image="Foto1/vegetables4.jpg">
+                    Додати до кошика
+                </button>
+            </div>
+
+
+
+            <div class="product" data-name="Кава розчинна сублімована" data-category="drink">
+                <img src="Foto/drink1.png" alt="Продукт" class="drink">
+                <h3>Кава розчинна сублімована</h3>
+                <p>Кава розчинна сублімована 500 гр JACOBS</p>
+                <p><strong>Ціна:</strong> 680 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Кава розчинна сублімована" data-price="680" data-image="Foto/drink1.png">
+                    Додати до кошика
+                </button>
+            </div>
+            
+
+            <div class="product" data-name="Вода мінеральна" data-category="drink">
+                <img src="Foto1/drink2.png" alt="Продукт" class="drink">
+                <h3>Вода мінеральна</h3>
+                <p>Вода мінеральна Моршинська негазована 6л</p>
+                <p><strong>Ціна:</strong> 61 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Вода мінеральна" data-price="61" data-image="Foto1/drink2.png">
+                    Додати до кошика
+                </button>
+            </div>
+            
+            <div class="product" data-name="Напій газований Coca-Cola" data-category="drink">
+                <img src="Foto1/drink3.png" alt="Продукт" class="drink">
+                <h3>Напій газований Coca-Cola</h3>
+                <p>Напій газований Coca-Cola 1,25л</p>
+                <p><strong>Ціна:</strong> 36 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Напій газований Coca-Cola" data-price="36" data-image="Foto1/drink3.png">
+                    Додати до кошика
+                </button>
+            </div>
+            
+            <div class="product" data-name="Напій газований Fanta Апельсин" data-category="drink">
+                <img src="Foto1/drink4.png" alt="Продукт" class="drink">
+                <h3>Напій газований Fanta Апельсин</h3>
+                <p>Напій газований Fanta Апельсин 1,25л</p>
+                <p><strong>Ціна:</strong> 35 грн</p>
+                <p class="availability" data-available="true">Є в наявності</p>
+                <button class="add-to-cart" data-name="Напій газований Fanta Апельсин" data-price="35" data-image="Foto1/drink4.png">
+                    Додати до кошика
+                </button>
+            </div>
+            
+
+
+
+            
+
+        </div>
+    </div>
+    
+    <!-- Модальне вікно для кошика -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Ваш кошик</h3>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Фото</th>
+                        <th>Товар</th>
+                        <th>Кількість</th>
+                        <th>Ціна за одиницю</th>
+                        <th>Загальна ціна</th>
+                        <th>Дія</th>
+                    </tr>
+                </thead>
+                
+                
+                <tbody id="cart-items">
+                    <!-- Товари будуть додаватися сюди -->
+                </tbody>
+            </table>
+    
+            <!-- Вибір транспорту -->
+            <div class="form-group transport-section">
+                <label for="transport">Тип доставки:</label>
+                <div class="transport-options">
+                    <label>
+                        <input type="radio" name="transport" value="bike" required>
+                        <img src="Foto/miniTruck.png" alt="Мала Вантажівка" class="transport-icon"> Мала Вантажівка
+                    </label>
+                    <label>
+                        <input type="radio" name="transport" value="car" required>
+                        <img src="Foto/Truck1.png" alt="Середня Вантажівка" class="transport-icon"> Середня Вантажівка
+                    </label>
+                    <label>
+                        <input type="radio" name="transport" value="truck" required>
+                        <img src="Foto/Truck.png" alt="Велика Вантажівка" class="transport-icon"> Велика Вантажівка
+                    </label>
+                </div>
+            </div>
+    
+            <div class="cart-summary">
+                <!-- Ціна доставки -->
+                <p class="summary-line"><strong>Ціна доставки:</strong> <span id="delivery-cost">0</span> грн</p>
+                <!-- Ціна за товар -->
+                <p class="summary-line"><strong>Ціна за товар:</strong> <span id="total-price">0</span> грн</p>
+                <!-- Разом -->
+                <p class="summary-line total-summary"><strong>Разом:</strong> <span id="final-total">0</span> грн</p>
+            </div>
+    
+            <!-- Поля для оформлення замовлення -->
+            <div id="checkout-fields" class="checkout-fields"></div>
+    
+            <div class="modal-buttons">
+                <button id="checkout-button" class="btn btn-success">Оформити замовлення</button>
+                <button id="close-cart" class="btn btn-secondary">Закрити</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div id="info" class="footer-section about">
+                <h3>Додаткова інформація</h3>
+                <p>Ми надаємо якісні послуги зі складування та постачання товарів для супермаркетів. 
+                Наші клієнти отримують своєчасні та надійні поставки.</p>
+            </div>
+            <div id="contacts" class="footer-section contact">
+                <h3>Зв'язок з нами</h3>
+                <ul>
+                    <li><strong>Адреса:</strong> вул. Прикладна, 123, Київ</li>
+                    <li><strong>Телефон:</strong> <a href="tel:+380441234567">+38 (044) 123-45-67</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:info@skladpostach.com">info@skladpostach.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section socials">
+                <h3>Ми в соцмережах</h3>
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="Foto/facebook.png" alt="Facebook" width="30" height="30">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="Foto/instagram.png" alt="Instagram" width="30" height="30">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="Foto/linkedl.png" alt="LinkedIn" width="30" height="30">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Склад та Постачання для Супермаркету | Всі права захищено</p>
+        </div>
+    </footer>
+</body>
+</html>

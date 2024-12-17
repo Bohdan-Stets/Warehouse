@@ -1,0 +1,571 @@
+/* ======================= Глобальні стилі ======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ======================= Шапка сайту (header) ======================= */
+header {
+    background-color: #2d3b3a;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Робить шапку "липкою" */
+    top: 0; /* Фіксує шапку у верхній частині сторінки */
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь для візуального відділення */
+}
+
+header .logo {
+    order: 1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-right: 40px;
+}
+
+header .logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f39c12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: text-glow 3s infinite;
+}
+
+header .header-icon {
+    order: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 100px; /* Додає невеликий відступ зліва */
+}
+
+header .header-icon img {
+    max-width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+header .header-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Ефект тексту */
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 10px rgba(243, 156, 18, 0.7),
+                     0 0 20px rgba(243, 156, 18, 0.5);
+    }
+    50% {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7),
+                     0 0 15px rgba(243, 156, 18, 0.9),
+                     0 0 30px rgba(243, 156, 18, 0.7);
+    }
+}
+
+
+
+/* ======================= Меню навігації ======================= */
+nav {
+    position: relative;
+    text-align: left;
+  }
+  
+  .menu-dropdown {
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    order: 1;
+  }
+  
+  .menu-dropdown span {
+    position: relative;
+    padding: 15px 68px;
+    font-weight: 700; /* Зробити текст ще жирнішим */
+    color: #f4d6a3; /* Білий колір тексту */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Додає чіткість через тінь */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Псевдоелемент для білої анімованої лінії */
+  .menu-dropdown span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #d48510; /* Білий колір для рамки */
+    border-radius: 5px; /* Повторюємо закруглення кнопки */
+    box-sizing: border-box; /* Враховуємо padding і border */
+    animation: border-move 2s linear infinite; /* Запускаємо анімацію */
+    pointer-events: none; /* Лінія не заважає клікам */
+  }
+  
+  /* Анімація обведення */
+  @keyframes border-move {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+  }
+  
+  /* Hover ефект для кнопки */
+  .menu-dropdown span:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+  }
+  
+  .menu-dropdown:hover span,
+  .menu-dropdown.active span {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34495e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    top: 45px;
+    left: 0;
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+    background-color: #2d3b3a;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+  }
+  
+  .menu-dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  
+  /* Підменю */
+  .dropdown-content .sub-menu {
+    display: none;
+    position: relative;
+    background-color: #2d3b3a;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content .sub-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 8px;
+  }
+  
+  .dropdown-content .sub-menu a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+  }
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #333; /* Темний фон */
+    color: #fff; /* Білий текст */
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-content {
+    display: flex; /* Вирівнюємо блоки по горизонталі */
+    justify-content: space-between; /* Рівномірний розподіл */
+    align-items: flex-start; /* Вирівнюємо по верхньому краю */
+    padding: 0 20px;
+    flex-wrap: wrap; /* Дозволяє перенос блоків на новий рядок */
+  }
+  
+  .footer-section {
+    width: 30%; /* Ширина кожного блоку */
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    color: #f1c40f; /* Жовтий заголовок */
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p, .footer-section ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  
+  .footer-section ul li {
+    list-style: none;
+    margin: 5px 0;
+  }
+  
+  .footer-section a {
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+    color: #f1c40f;
+  }
+  
+  /* Соцмережі з логотипами */
+  .footer-section.socials a {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  .footer-section.socials img {
+    vertical-align: middle; /* Вирівнює логотипи по центру */
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-section.socials img:hover {
+    transform: scale(1.2); /* Збільшує іконку при наведенні */
+  }
+  
+  /* Нижня частина футера */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px solid #777;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  
+
+
+
+/* ===== Відео-контейнер ===== */
+.video-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 50px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ===== Стилі для iframe ===== */
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+.video-container:hover iframe {
+    pointer-events: auto; /* Дозволяє відтворення при наведенні */
+}
+
+
+
+
+
+
+  
+
+
+/* =============== Оновлена секція "Про Нас" =============== */
+.about-section {
+    background: linear-gradient(135deg, #2c3e50, #17212b); 
+    color: #ecf0f1; 
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.about-section h2 {
+    font-size: 34px;
+    color: #f39c12;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0 auto 30px;
+    max-width: 800px;
+    color: #f8e8c8;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.about-section h3 {
+    font-size: 26px;
+    color: #ffb442;
+    margin: 40px auto 20px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.about-section h3::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: #ffb442;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+
+
+
+.about-section .values {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section .values li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-left: 5px solid #f39c12;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ecf0f1;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.about-section .values li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* =============== Секція "Переваги" =============== */
+.benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.benefit {
+    background: #f9f9f9;
+    border: 2px solid #f39c12;
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.benefit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.benefit,
+.about-box {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+
+
+
+
+/* =============== Секція "Команда" =============== */
+.team {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.team h2 {
+    color: #f39c12;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.team-members {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-members .member {
+    text-align: center;
+    max-width: 150px;
+}
+
+.member img {
+    border: 5px solid #f39c12;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.member img:hover {
+    transform: scale(1.1);
+}
+
+.member p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #2d3b3a;
+    font-weight: 500;
+}
+
+
+
+
+
+/* Оновлений стиль для секції "Чому обирають нас" */
+.why-choose-us {
+    background-color: #f1f1f1; /* Заміна синього на світло-сірий фон */
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    color: #f39c12; /* Оранжевий заголовок */
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.why-choose-us .card-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.why-choose-us .card {
+    background-color: #ffffff;
+    border: 2px solid #f39c12; /* Оранжеві бордери */
+    border-radius: 15px; /* Заокруглені кути */
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    color: #2c3e50; /* Темний текст для кращої видимості */
+}
+
+/* Ефект при ховері для карток */
+.why-choose-us .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Підсвічування при ховері */
+}
+
+/* Заголовки в картках */
+.why-choose-us .card h3 {
+    font-size: 20px;
+    color: #f39c12;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Опис у картках */
+.why-choose-us .card p {
+    font-size: 16px;
+    color: #2d3b3a;
+    line-height: 1.6;
+}
+
+/* Додаткові анімації */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.why-choose-us .card {
+    animation: fadeIn 0.8s ease-in-out;
+}

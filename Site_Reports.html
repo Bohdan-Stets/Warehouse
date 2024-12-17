@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <link rel="icon" type="image/x-icon" href="Foto/paper1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse</title>
+    <link rel="stylesheet" href="Reports.css">
+    <script src="site_reports.js" defer></script>
+</head>
+<body>
+    <!-- Шапка сайту -->
+    <header>
+        
+        <nav>
+            <div class="menu-dropdown">
+                <span>Меню</span>
+                <div class="dropdown-content">
+                    <a href="index.html">Головна</a>
+                    <a href="Composition.html">Склади</a>
+                    <a href="Provider.html">Постачальники</a>
+                    <a href="Site_Reports.html">Звіт</a>
+                    <a href="Contacts.html">Контакти</a>
+                    <a href="About_us.html">Про Нас</a>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Логотипи по центру -->
+        <div class="center-links">
+            <a href="Site.html">
+                <img src="Foto/War.png" alt="Логотип" />
+            </a>
+            <a href="Provider.html">
+                <img src="Foto/prov.png" alt="Логотип" />
+            </a>
+            <a href="Site_Reports.html">
+                <img src="Foto/paper1.png" alt="Логотип" />
+            </a>
+        </div>
+    
+        <!-- Логотип праворуч -->
+        <div class="header-icon">
+            <a href="main.html">
+                <img src="Foto/logo_main_CCF_icon.ico" alt="Логотип" />
+            </a>
+        </div>
+    </header>
+
+    <!-- Контент сторінки -->
+    <div class="container">
+        <!-- Загальна інформація -->
+        <section>
+            <h2>Загальний Звіт</h2>
+            <p>Загальна кількість товарів: <span id="total-items">0</span></p>
+            <p>Загальна вартість товарів: <span id="total-cost">0.00 грн</span></p>
+        </section>
+    
+        <!-- Список замовлень -->
+        <section>
+            <h3>Список Замовлень</h3>
+            <div id="orders-list"></div>
+        </section>
+    </div>
+    
+    <div class="print-button">
+        <button onclick="window.print()">Друкувати Звіт</button>
+        <button id="clear-orders">Очистити Замовлення</button>
+    </div>
+    
+    
+
+    <!-- Підвал -->
+
+    <footer>
+        <div class="footer-content">
+            <div id="info" class="footer-section about">
+                <h3>Додаткова інформація</h3>
+                <p>Ми надаємо якісні послуги зі складування та постачання товарів для супермаркетів. 
+                Наші клієнти отримують своєчасні та надійні поставки.</p>
+            </div>
+            <div id="contacts" class="footer-section contact">
+                <h3>Зв'язок з нами</h3>
+                <ul>
+                    <li><strong>Адреса:</strong> вул. Прикладна, 123, Київ</li>
+                    <li><strong>Телефон:</strong> <a href="tel:+380441234567">+38 (044) 123-45-67</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:info@skladpostach.com">info@skladpostach.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section socials">
+                <h3>Ми в соцмережах</h3>
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="Foto/facebook.png" alt="Facebook" width="30" height="30">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="Foto/instagram.png" alt="Instagram" width="30" height="30">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="Foto/linkedl.png" alt="LinkedIn" width="30" height="30">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Склад та Постачання для Супермаркету | Всі права захищено</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,560 @@
+/* ======================= Глобальні стилі ======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5; /* Світлий фон */
+    color: #333; /* Основний колір тексту */
+    line-height: 1.6;
+}
+
+/* ======================= Шапка сайту (header) ======================= */
+header {
+    background-color: #2d3b3a;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Робить шапку "липкою" */
+    top: 0; /* Фіксує шапку у верхній частині сторінки */
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь для візуального відділення */
+}
+
+header .logo {
+    order: 1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-right: 40px;
+}
+
+header .logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f39c12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: text-glow 3s infinite;
+}
+
+header .header-icon {
+    order: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 100px; /* Додає невеликий відступ зліва */
+}
+
+header .header-icon img {
+    max-width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+header .header-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Ефект тексту */
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 10px rgba(243, 156, 18, 0.7),
+                     0 0 20px rgba(243, 156, 18, 0.5);
+    }
+    50% {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7),
+                     0 0 15px rgba(243, 156, 18, 0.9),
+                     0 0 30px rgba(243, 156, 18, 0.7);
+    }
+}
+
+
+
+
+
+/* ======================= Меню навігації ======================= */
+nav {
+    position: relative;
+    text-align: left;
+  }
+  
+  .menu-dropdown {
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    order: 1;
+  }
+  
+  .menu-dropdown span {
+    position: relative;
+    padding: 15px 68px;
+    font-weight: 700; /* Зробити текст ще жирнішим */
+    color: #f4d6a3; /* Білий колір тексту */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Додає чіткість через тінь */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Псевдоелемент для білої анімованої лінії */
+  .menu-dropdown span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #d48510; /* Білий колір для рамки */
+    border-radius: 5px; /* Повторюємо закруглення кнопки */
+    box-sizing: border-box; /* Враховуємо padding і border */
+    animation: border-move 2s linear infinite; /* Запускаємо анімацію */
+    pointer-events: none; /* Лінія не заважає клікам */
+  }
+  
+  /* Анімація обведення */
+  @keyframes border-move {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+  }
+  
+  /* Hover ефект для кнопки */
+  .menu-dropdown span:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+  }
+  
+  .menu-dropdown:hover span,
+  .menu-dropdown.active span {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: scale(1.1);
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34495e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    top: 45px;
+    left: 0;
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+    background-color: #2d3b3a;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+  }
+  
+  .menu-dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  
+  /* Підменю */
+  .dropdown-content .sub-menu {
+    display: none;
+    position: relative;
+    background-color: #2d3b3a;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content .sub-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 8px;
+  }
+  
+  .dropdown-content .sub-menu a:hover {
+    background-color: #f39c12;
+    color: #2d3b3a;
+    transform: translateX(10px);
+  }
+  
+  
+  
+  
+
+
+/* ======================= Карта та контакти ======================= */
+.contact-map h2,
+.contact-info h1 {
+    color: #f39c12; /* Помаранчевий акцент */
+    font-size: 24px; /* Злегка збільшуємо розмір */
+    text-align: center; /* Вирівнюємо по центру */
+    margin-bottom: 15px; /* Додаємо відступ знизу */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9); /* Додаємо легку тінь для виразності */
+}
+
+
+.contact-map iframe {
+    border: 3px solid #f39c12;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.contact-map iframe:hover {
+    transform: scale(1.05);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2d3b3a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info p, .contact-info a {
+    font-size: 1.1rem;
+    color: #f1c40f;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* Заголовки блоків */
+.contact-info h3, .work-schedule h3 {
+    font-size: 20px;
+    color: #2c3e50; /* Темно-синій колір заголовків */
+    margin-bottom: 10px;
+    text-transform: uppercase; /* Верхній регістр для заголовків */
+    border-bottom: 2px solid #f39c12; /* Підкреслення для акценту */
+    display: inline-block; /* Підкреслення не тягнеться на всю ширину */
+    padding-bottom: 5px;
+}
+
+/* Стилі для тексту контактної інформації */
+.contact-info p, .work-schedule p {
+    font-size: 16px;
+    line-height: 1.6; /* Покращує читабельність */
+    margin: 5px 0; /* Відступ між рядками */
+    color: #555; /* М'якший сірий для звичайного тексту */
+}
+
+/* Стилі для годин роботи */
+.work-schedule ul {
+    list-style: none; /* Видаляємо маркери списку */
+    padding: 0;
+    margin: 0;
+}
+
+.work-schedule ul li {
+    font-size: 16px;
+    padding: 5px 0;
+    color: #555;
+    display: flex;
+    justify-content: space-between; /* Рівномірний розподіл між елементами */
+    border-bottom: 1px dashed #ccc; /* Пунктирна лінія для розділення */
+}
+
+.work-schedule ul li:last-child {
+    border-bottom: none; /* Видаляємо лінію в останньому пункті */
+}
+
+
+
+
+
+
+/* Загальний контейнер для контактної інформації та графіка роботи */
+.info-block {
+    display: flex; /* Розташування блоків у рядок */
+    justify-content: space-between; /* Розподілення блоків по ширині */
+    gap: 20px; /* Відступ між блоками */
+    margin: 20px auto; /* Центрування по горизонталі */
+    max-width: 1300px; /* Обмежена ширина */
+}
+
+/* Окремі блоки для контактної інформації та графіка роботи */
+.contact-info, .working-hours {
+    background-color: #f9f9f9; /* Світлий фон */
+    border: 1px solid #ddd; /* Тонка рамка */
+    border-radius: 8px; /* Закруглені кути */
+    padding: 20px; /* Внутрішній відступ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь */
+    width: 48%; /* Ширина кожного блоку */
+    height: 0%;
+    font-family: 'Arial', sans-serif; /* Стандартний шрифт */
+    color: #333; /* Темно-сірий текст */
+    text-align: left; /* Вирівнювання тексту ліворуч */
+}
+
+/* Заголовки блоків */
+.contact-info h1, .working-hours h1 {
+    font-size: 20px;
+    color: #2c3e50; /* Темно-синій колір */
+    margin-bottom: 15px; /* Відступ знизу */
+    border-bottom: 2px solid #f39c12; /* Підкреслення */
+    display: inline-block;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Список графіка роботи */
+.working-hours ul {
+    list-style: none; /* Видаляємо маркери списку */
+    padding: 0;
+    margin: 0;
+}
+
+.working-hours ul li {
+    display: flex;
+    justify-content: space-between; /* Вирівнюємо текст */
+    border-bottom: 1px dashed #ccc; /* Пунктирна лінія для розділення */
+    padding: 5px 0;
+}
+
+.working-hours ul li:last-child {
+    border-bottom: none; /* Видаляємо лінію для останнього елемента */
+    margin-bottom: 0; /* Видаляємо зайвий відступ */
+}
+
+/* Стиль для посилання Email */
+.contact-info a {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ======================= Часті питання ======================= */
+.faq h2 {
+    color: #f39c12;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.faq details {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq details:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.faq details summary {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2d3b3a;
+    cursor: pointer;
+}
+
+.faq details summary:hover {
+    color: #f39c12;
+}
+
+.faq details p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* ======================= Форма зворотного зв’язку ======================= */
+
+
+
+
+
+.feedback-form {
+    border: 1px solid #ddd; /* Тонка рамка */
+    margin: 20px auto; /* Центрування по горизонталі */
+    max-width: 600px; /* Такий самий розмір як "Контактна інформація" */
+    text-align: center; /* Вирівнюємо вміст по центру */
+    background-color: #2d3b3a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Розтягується на весь блок */
+    font-size: 16px;
+    box-sizing: border-box; 
+}
+
+.feedback-form h2 {
+    color: #f39c12;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.feedback-form input, .feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #f39c12;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #2d3b3a;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-form input:focus, .feedback-form textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.feedback-form button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.feedback-form button:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+/* Footer */
+footer {
+  background-color: #333; /* Темний фон */
+  color: #fff; /* Білий текст */
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-content {
+  display: flex; /* Вирівнюємо блоки по горизонталі */
+  justify-content: space-between; /* Рівномірний розподіл */
+  align-items: flex-start; /* Вирівнюємо по верхньому краю */
+  padding: 0 20px;
+  flex-wrap: wrap; /* Дозволяє перенос блоків на новий рядок */
+}
+
+.footer-section {
+  width: 30%; /* Ширина кожного блоку */
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  color: #f1c40f; /* Жовтий заголовок */
+  margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section ul {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.footer-section ul li {
+  list-style: none;
+  margin: 5px 0;
+}
+
+.footer-section a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #f1c40f;
+}
+
+/* Соцмережі з логотипами */
+.footer-section.socials a {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.footer-section.socials img {
+  vertical-align: middle; /* Вирівнює логотипи по центру */
+  transition: transform 0.3s ease;
+}
+
+.footer-section.socials img:hover {
+  transform: scale(1.2); /* Збільшує іконку при наведенні */
+}
+
+/* Нижня частина футера */
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid #777;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
